@@ -11,16 +11,16 @@ void inicializarPersona(Persona persona, const char* nombre, const char* ci) {
 }
 
 // Crear el organigrama
-TipoRet EliminarOrg(Empresa &e) {
-    if (e->organigrama == nullptr) {
-        return ERROR; // La empresa está vacía
+TipoRet CrearOrg(Empresa &e, Cadena nombreEmpresa, Cadena cargo) {
+    if (e->organigrama != nullptr) {
+        return ERROR; // La empresa ya tiene un organigrama
     }
-    for (int i = 0; i < e->organigrama->numSubordinados; i++) {
-        delete e->organigrama->subordinados[i]; // Liberar la memoria de cada subordinado
-    }
-    delete[] e->organigrama->subordinados; // Liberar la memoria de subordinados
-    delete e->organigrama; // Liberar la memoria del organigrama
-    e->organigrama = nullptr;
+    strcpy(e->nombre, nombreEmpresa); // Almacenar el nombre de la empresa
+    e->organigrama = new _persona; 
+    e->organigrama->subordinados = new _persona*[100]; // Asignar un arreglo de _persona*
+    e->organigrama->numSubordinados = 0;
+    strcpy(e->organigrama->nombre, cargo); // Cargo inicial
+    strcpy(e->organigrama->ci, ""); // Inicializar ci
     return OK;
 }
 // Eliminar el organigrama
