@@ -17,12 +17,15 @@ TipoRet CrearOrg(Empresa &e, Cadena nombreEmpresa, Cadena cargo) {
     }
     strcpy(e->nombre, nombreEmpresa); // Almacenar el nombre de la empresa
     e->organigrama = new _persona; 
-    e->organigrama->subordinados = new _persona*[100]; // Asignar un arreglo de _persona*
+    for (int i = 0; i < 100; i++) {
+        e->organigrama->subordinados[i] = nullptr; // Inicializar cada elemento a nullptr
+    }
     e->organigrama->numSubordinados = 0;
     strcpy(e->organigrama->nombre, cargo); // Cargo inicial
     strcpy(e->organigrama->ci, ""); // Inicializar ci
     return OK;
 }
+
 // Eliminar el organigrama
 void eliminarOrganigramaRec(Persona node) {
 	if (node == nullptr) {
