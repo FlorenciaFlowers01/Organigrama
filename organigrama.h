@@ -17,6 +17,7 @@ typedef _persona* Persona; // Alias para puntero a _persona
 
 // Definición de la estructura Empresa
 struct _empresa {
+	char nombre[100];
 	Persona organigrama; // Puntero al organigrama
 };
 typedef _empresa* Empresa; // Alias para puntero a _empresa
@@ -30,7 +31,7 @@ typedef enum _retorno TipoRet; // Alias para el tipo de retorno
 typedef char* Cadena; // Alias para cadenas de caracteres
 
 // Prototipos de funciones
-TipoRet CrearOrg(Empresa &e, Cadena cargo);
+TipoRet CrearOrg(Empresa &e, Cadena nombreEmpresa, Cadena cargo);
 TipoRet EliminarOrg(Empresa &e);
 TipoRet AsignarPersona(Empresa &e, Cadena cargo, Cadena nom, Cadena ci);
 TipoRet EliminarPersona(Empresa &e, Cadena ci);
