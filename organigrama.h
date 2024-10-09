@@ -43,4 +43,3 @@ void eliminarOrganigramaRec(Persona node); // Cambiar a Persona en vez de Person
 bool eliminarPersonaRec(Persona node, const char* ci); // Cambiar a Persona en vez de Persona*
 
 #endif // ORGANIGRAMA3_H
-
