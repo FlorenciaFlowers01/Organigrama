@@ -73,13 +73,6 @@ TipoRet AsignarPersona(Empresa &e, Cadena cargo, Cadena nom, Cadena ci) {
 	}
 	
 	// Comprobar si la persona ya está asignada a otro cargo
-	for (int i = 0; i < cargoPersona->numSubordinados; ++i) {
-		if (strcmp(cargoPersona->subordinados[i]->ci, ci) == 0) {
-			return ERROR; // La persona ya está asignada a este cargo
-		}
-	}
-	
-	// Comprobar si la persona ya está asignada en otro cargo
 	if (personaYaAsignada(e, ci)) {
 		return ERROR; // La persona ya está asignada a otro cargo
 	}
@@ -88,7 +81,8 @@ TipoRet AsignarPersona(Empresa &e, Cadena cargo, Cadena nom, Cadena ci) {
 	if (cargoPersona->numSubordinados < MAX_PERSONAS) {
 		Persona nuevaPersona = new _persona; 
 		inicializarPersona(nuevaPersona, nom, ci);
-		cargoPersona->subordinados[cargoPersona->numSubordinados++] = nuevaPersona;
+		cargoPersona->subordinados[cargoPersona->numSubordinados] = nuevaPersona;
+		cargoPersona->numSubordinados++;
 		return OK;
 	}
 	
@@ -132,8 +126,7 @@ void listarPersonasRec(Persona node, const char* cargo) {
 		return;
 	}
 	if (strcmp(node->nombre, cargo) == 0) {
-		cout << "Listado de personas asignadas a " << cargo << ":" << endl;
-		cout << "---------------------------------------" << endl;
+		cout << "Listado de personas asignadas a " << cargo << ":\n-------------------------------------------------------" << endl;
 		for (int i = 0; i < node->numSubordinados; ++i) {
 			cout << node->subordinados[i]->ci << " - " << node->subordinados[i]->nombre << endl;
 		}
