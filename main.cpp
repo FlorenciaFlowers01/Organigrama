@@ -19,6 +19,7 @@ int main(int argc, char *argv[]) {
 	Empresa empresa = new _empresa; // Inicializar empresa
 	empresa->organigrama = nullptr;
 	int opcion;
+	char nombreEmpresa[100];
 	char nombre[50];
 	char cargo[50];
 	char ci[12];
@@ -28,16 +29,19 @@ int main(int argc, char *argv[]) {
 		cin >> opcion;
 		cin.ignore(); // Limpiar el buffer de entrada
 		switch (opcion) {
-		case 1:
+		case 1:{
+			cout << "\nIngrese el nombre de la empresa: ";
+			cin.getline(nombreEmpresa, 100);
 			cout << "\nIngrese el nombre del cargo inicial: ";
 			cin.getline(cargo, 50);
-			if (CrearOrg(empresa, cargo) == OK) {
+			if (CrearOrg(empresa, nombreEmpresa, cargo) == OK) {
 				cout << "\nOrganigrama creado con éxito." << endl;
 			} else {
 				cout << "\nError al crear el organigrama." << endl;
 			}
 			break;
-		case 2:
+		}
+		case 2:{
 			cout << "\nIngrese el nombre del cargo: ";
 			cin.getline(cargo, 50);
 			cout << "\nIngrese el nombre de la persona: ";
@@ -50,21 +54,24 @@ int main(int argc, char *argv[]) {
 				cout << "\nError al asignar la persona." << endl;
 			}
 			break;
-		case 3:
+		}
+		case 3:{
 			cout << "\nIngrese el nombre del cargo para listar personas: ";
 			cin.getline(cargo, 50);
 			if (ListarPersonas(empresa, cargo) == ERROR) {
 				cout << "\nError al listar las personas." << endl;
 			}
 			break;
-		case 4:
+			}
+		case 4:{
 			if (EliminarOrg(empresa) == OK) {
 				cout << "\nOrganigrama eliminado correctamente." << endl;
 			} else {
 				cout << "\nError al eliminar el organigrama." << endl;
 			}
 			break;
-		case 5:
+			}
+		case 5:{
 			cout << "\nIngrese la cédula de identidad de la persona a eliminar: ";
 			cin.getline(ci, 12);
 			if (EliminarPersona(empresa, ci) == OK) {
@@ -73,13 +80,15 @@ int main(int argc, char *argv[]) {
 				cout << "\nError al eliminar la persona." << endl;
 			}
 			break;
-		case 6:
+			}
+		case 6:{
 			cout << "\nSaliendo..." << endl;
 			break;
 		default:
 			cout << "\nOpción no válida." << endl;
 			break;
 		}
+}
 	} while (opcion != 6);
 	
 	delete empresa; // Liberar la memoria de la empresa
