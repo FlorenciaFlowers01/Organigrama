@@ -11,10 +11,11 @@ void inicializarPersona(Persona persona, const char* nombre, const char* ci) {
 }
 
 // Crear el organigrama
-TipoRet CrearOrg(Empresa &e, Cadena cargo) {
+TipoRet CrearOrg(Empresa &e, Cadena nombreEmpresa, Cadena cargo) {
 	if (e->organigrama != nullptr) {
 		return ERROR; // La empresa ya tiene un organigrama
 	}
+	strcpy(e->nombre, nombreEmpresa); // Almacenar el nombre de la empresa
 	e->organigrama = new _persona; 
 	inicializarPersona(e->organigrama, cargo, ""); // Cargo inicial
 	return OK;
