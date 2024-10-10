@@ -5,13 +5,16 @@
 using namespace std;
 
 void mostrarMenu() {
+	cout << "\n-----------------Menú-----------------" << endl;
 	cout << "\nOpciones:" << endl;
 	cout << "1. Crear organigrama" << endl;
 	cout << "2. Asignar persona" << endl;
 	cout << "3. Listar personas" << endl;
 	cout << "4. Eliminar organigrama" << endl;
 	cout << "5. Eliminar persona" << endl;
-	cout << "6. Salir" << endl;
+	cout << "6. Añadir nuevo cargo" << endl;
+	cout << "7. Listar jerarquía" << endl;
+	cout << "8. Salir" << endl;
 	cout << "Seleccione una opción: \n";
 }
 
@@ -23,6 +26,8 @@ int main(int argc, char *argv[]) {
 	char nombre[50];
 	char cargo[50];
 	char ci[12];
+	char cargoPadre[50];
+	char nuevoCargo[50];
 	
 	do {
 		mostrarMenu();
@@ -82,6 +87,24 @@ int main(int argc, char *argv[]) {
 			break;
 			}
 		case 6:{
+				cout << "\nIngrese el nombre del cargo padre: ";
+				cin.getline(cargoPadre, 50);
+				cout << "\nIngrese el nombre del nuevo cargo: ";
+				cin.getline(nuevoCargo, 50);
+				if (NuevoCargo(empresa, cargoPadre, nuevoCargo) == OK) {
+					cout << "\nNuevo cargo añadido con éxito." << endl;
+				} else {
+					cout << "\nError al añadir el nuevo cargo." << endl;
+				}
+				break;
+			}
+		case 7:{
+					if (ListarJerarquia(empresa) == ERROR) {
+						cout << "\nError al listar la jerarquía." << endl;
+					}
+					break;
+				}
+		case 8:{
 			cout << "\nSaliendo..." << endl;
 			break;
 		default:
@@ -89,8 +112,9 @@ int main(int argc, char *argv[]) {
 			break;
 		}
 }
-	} while (opcion != 6);
+	} while (opcion != 8);
 	
 	delete empresa; // Liberar la memoria de la empresa
 	return 0;
 }
+
