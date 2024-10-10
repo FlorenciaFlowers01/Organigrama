@@ -36,6 +36,8 @@ TipoRet EliminarOrg(Empresa &e);
 TipoRet AsignarPersona(Empresa &e, Cadena cargo, Cadena nom, Cadena ci);
 TipoRet EliminarPersona(Empresa &e, Cadena ci);
 TipoRet ListarPersonas(Empresa e, Cadena cargo);
+TipoRet NuevoCargo(Empresa &e, Cadena cargoPadre, Cadena nuevoCargo);
+TipoRet ListarJerarquia(Empresa e);
 
 void inicializarPersona(Persona persona, const char* nombre, const char* ci); // Cambiar a Persona en vez de Persona*
 Persona buscarCargo(Persona node, const char* cargo); // Cambiar a Persona en vez de Persona*
