@@ -12,20 +12,19 @@ void inicializarPersona(Persona persona, const char* nombre, const char* ci) {
 
 // Crear el organigrama
 TipoRet CrearOrg(Empresa &e, Cadena nombreEmpresa, Cadena cargo) {
-    if (e->organigrama != nullptr) {
-        return ERROR; // La empresa ya tiene un organigrama
-    }
-    strcpy(e->nombre, nombreEmpresa); // Almacenar el nombre de la empresa
-    e->organigrama = new _persona; 
-    for (int i = 0; i < 100; i++) {
-        e->organigrama->subordinados[i] = nullptr; // Inicializar cada elemento a nullptr
-    }
-    e->organigrama->numSubordinados = 0;
-    strcpy(e->organigrama->nombre, cargo); // Cargo inicial
-    strcpy(e->organigrama->ci, ""); // Inicializar ci
-    return OK;
+	if (e->organigrama != nullptr) {
+		return ERROR; // La empresa ya tiene un organigrama
+	}
+	strcpy(e->nombre, nombreEmpresa); // Almacenar el nombre de la empresa
+	e->organigrama = new _persona; 
+	for (int i = 0; i < 100; i++) {
+		e->organigrama->subordinados[i] = nullptr; // Inicializar cada elemento a nullptr
+	}
+	e->organigrama->numSubordinados = 0;
+	strcpy(e->organigrama->nombre, cargo); // Cargo inicial
+	strcpy(e->organigrama->ci, ""); // Inicializar ci
+	return OK;
 }
-
 // Eliminar el organigrama
 void eliminarOrganigramaRec(Persona node) {
 	if (node == nullptr) {
@@ -134,7 +133,10 @@ void listarPersonasRec(Persona node, const char* cargo) {
 	if (strcmp(node->nombre, cargo) == 0) {
 		cout << "Listado de personas asignadas a " << cargo << ":\n-------------------------------------------------------" << endl;
 		for (int i = 0; i < node->numSubordinados; ++i) {
+			// Solo imprime personas directamente asignadas, no recursivamente
+			if (strlen(node->subordinados[i]->ci) > 0) { // Verificar que la persona tenga cédula asignada
 			cout << node->subordinados[i]->ci << " - " << node->subordinados[i]->nombre << endl;
+			}
 		}
 		return;
 	}
