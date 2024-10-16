@@ -108,7 +108,16 @@ int main(int argc, char *argv[]) {
 					}
 					break;
 				}
-		case 8:{
+		case 8:{}
+			break;
+		case 9: {}
+			break;
+		case 10: {}
+			break;
+		case 11: {}
+			break;
+			
+		case 12:{
 			cout << "\nSaliendo..." << endl;
 			break;
 		default:
