@@ -14,7 +14,11 @@ void mostrarMenu() {
 	cout << "5. Eliminar persona" << endl;
 	cout << "6. Añadir nuevo cargo" << endl;
 	cout << "7. Listar jerarquía" << endl;
-	cout << "8. Salir" << endl;
+	cout << "8. Listar cargos alfabeticamente" << endl;
+	cout << "9. Eliminar cargo" << endl;
+	cout << "10. Reasignar Persona" << endl;
+	cout << "11. Listar super cargos" << endl;
+	cout << "12. Salir" << endl;
 	cout << "Seleccione una opción: \n";
 }
 
@@ -112,7 +116,7 @@ int main(int argc, char *argv[]) {
 			break;
 		}
 }
-	} while (opcion != 8);
+	} while (opcion != 12);
 	
 	delete empresa; // Liberar la memoria de la empresa
 	return 0;
