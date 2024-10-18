@@ -39,10 +39,10 @@ TipoRet ListarPersonas(Empresa e, Cadena cargo);
 TipoRet NuevoCargo(Empresa &e, Cadena cargoPadre, Cadena nuevoCargo);
 TipoRet ListarJerarquia(Empresa e);
 
-void inicializarPersona(Persona persona, const char* nombre, const char* ci); // Cambiar a Persona en vez de Persona*
-Persona buscarCargo(Persona node, const char* cargo); // Cambiar a Persona en vez de Persona*
-void listarPersonasRec(Persona node, const char* cargo); // Cambiar a Persona en vez de Persona*
-void eliminarOrganigramaRec(Persona node); // Cambiar a Persona en vez de Persona*
-bool eliminarPersonaRec(Persona node, const char* ci); // Cambiar a Persona en vez de Persona*
+void inicializarPersona(Persona persona, const char* nombre, const char* ci); 
+Persona buscarCargo(Persona node, const char* cargo); 
+void listarPersonasRec(Persona node, const char* cargo); 
+void eliminarOrganigramaRec(Persona node); 
+bool eliminarPersonaRec(Persona node, const char* ci); 
 
 #endif // ORGANIGRAMA3_H
