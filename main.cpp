@@ -108,13 +108,13 @@ int main(int argc, char *argv[]) {
 					}
 					break;
 				}
-		case 8:{}
+		case 8:{cout << "\nNo implementada."<< endl;}
 			break;
-		case 9: {}
+		case 9: {cout << "\nNo implementada."<< endl;}
 			break;
-		case 10: {}
+		case 10: {cout << "\nNo implementada."<< endl;}
 			break;
-		case 11: {}
+		case 11: {cout << "\nNo implementada."<< endl;}
 			break;
 			
 		case 12:{
