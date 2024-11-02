@@ -1,6 +1,10 @@
 #include <iostream>
 #include <cstring>
 #include "organigrama3.h"
+#include "persona.h"
+#include "persona.cpp"
+#include "empresa.h"
+#include "empresa.cpp"
 
 using namespace std;
 
