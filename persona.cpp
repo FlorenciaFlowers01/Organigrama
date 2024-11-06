@@ -9,7 +9,8 @@ void inicializarPersona(Persona persona, const char* nombre, const char* ci) {
 	strcpy(persona->nombre, nombre);
 	strcpy(persona->ci, ci);
 	// Inicializar el número de subordinados a 0
-	persona->numSubordinados = 0;
+	persona->sig = null;
+	persona->ant = null;
 }
 
 // Comprobar si una persona ya está asignada a algún cargo
