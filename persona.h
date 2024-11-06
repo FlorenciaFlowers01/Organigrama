@@ -5,13 +5,13 @@
 
 const int MAX_PERSONAS = 100;
 
-struct _persona {
+struct persona {
     char nombre[50];
     char ci[8];
-    _persona *sig;
-    _persona *ant;
+    persona *sig;
+    persona *ant;
 };
-typedef _persona* Persona;
+typedef persona* Persona;
 
 // Funciones específicas de Persona
 void inicializarPersona(Persona persona, const char* nombre, const char* ci);
