@@ -8,8 +8,8 @@ const int MAX_PERSONAS = 100;
 struct _persona {
     char nombre[50];
     char ci[8];
-    int numSubordinados;
-    _persona* subordinados[MAX_PERSONAS];
+    _persona *sig;
+    _persona *ant;
 };
 typedef _persona* Persona;
 
