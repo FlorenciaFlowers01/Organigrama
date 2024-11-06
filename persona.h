@@ -8,6 +8,7 @@ const int MAX_PERSONAS = 100;
 struct persona {
     char nombre[50];
     char ci[8];
+    int subordinados;
     persona *sig;
     persona *ant;
 };
