@@ -3,6 +3,7 @@
 #include <cstring>
 using namespace std;
 
+
 // Función para inicializar una persona
 void inicializarPersona(Persona persona, const char* nombre, const char* ci) {
     // Copiar nombre y cédula de identidad a la persona
@@ -55,20 +56,20 @@ bool eliminarPersonaRec(Persona node, const char* ci) {
         return false;
     }
 
-    Persona current = node;
-    while (current != nullptr) {
-        if (strcmp(current->ci, ci) == 0) {
+    Persona actual = node;
+    while (actual != nullptr) {
+        if (strcmp(actual->ci, ci) == 0) {
             // Desenlazar la persona de la lista
-            if (current->ant != nullptr) {
-                current->ant->sig = current->sig;
+            if (actual->ant != nullptr) {
+                actual->ant->sig = actual->sig;
             }
-            if (current->sig != nullptr) {
-                current->sig->ant = current->ant;
+            if (actual->sig != nullptr) {
+                actual->sig->ant = actual->ant;
             }
-            delete current;
+            delete actual;
             return true;
         }
-        current = current->sig;
+        actual = actual->sig;
     }
     return false;
 }
@@ -92,20 +93,20 @@ void listarPersonasRec(Persona node, const char* cargo) {
     if (strcmp(node->nombre, cargo) == 0) {
         cout << "Listado de personas asignadas a " << cargo << ":\n-------------------------------------------------------" << endl;
         // Solo imprime personas directamente asignadas a este cargo
-        Persona current = node->sig;
-        while (current != nullptr) {
-            if (strlen(current->ci) > 0) { // Verificar que la persona tenga cédula asignada
-                cout << current->ci << " - " << current->nombre << endl;
+        Persona actual = node->sig;
+        while (actual != nullptr) {
+            if (strlen(actual->ci) > 0) { // Verificar que la persona tenga cédula asignada
+                cout << actual->ci << " - " << actual->nombre << endl;
             }
-            current = current->sig;
+            actual = actual->sig;
         }
         return;
     }
     // Llamar recursivamente para todos los subordinados
-    Persona current = node->sig;
-    while (current != nullptr) {
-        listarPersonasRec(current, cargo);
-        current = current->sig;
+    Persona actual = node->sig;
+    while (actual != nullptr) {
+        listarPersonasRec(actual, cargo);
+        actual = actual->sig;
     }
 }
 
