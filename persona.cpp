@@ -36,7 +36,7 @@ TipoRet AsignarPersona(Empresa &e, Cadena cargo, Cadena nom, Cadena ci) {
     }
     
     // Asignar la nueva persona
-    Persona nuevaPersona = new _persona; 
+    Persona nuevaPersona = new persona; 
     inicializarPersona(nuevaPersona, nom, ci);
     
     // Enlazar la nueva persona en la lista doblemente encadenada
