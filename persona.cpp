@@ -1,4 +1,5 @@
-#include "organigrama3.h"
+#include "persona.h"
+#include "empresa.h"
 #include <iostream>
 #include <cstring>
 using namespace std;
