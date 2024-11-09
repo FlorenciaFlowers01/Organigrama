@@ -10,7 +10,7 @@ TipoRet CrearOrg(Empresa &e, Cadena nombreEmpresa, Cadena cargo) {
         return ERROR; // La empresa ya tiene un organigrama
     }
     strcpy(e->nombre, nombreEmpresa);
-    e->organigrama = new _persona;
+    e->organigrama = new persona;
     e->organigrama->subordinados = 0; // Inicializar subordinados
     strcpy(e->organigrama->nombre, cargo); // Cargo inicial
     strcpy(e->organigrama->ci, ""); // Inicializar ci
@@ -68,7 +68,7 @@ TipoRet NuevoCargo(Empresa &e, Cadena cargoPadre, Cadena nuevoCargo) {
     }
 
     if (padre->subordinados < MAX_PERSONAS) {
-        Persona nuevo = new _persona;
+        Persona nuevo = new persona;
         inicializarPersona(nuevo, nuevoCargo, "");
         padre->subordinados[padre->subordinados++] = nuevo;
         nuevo->ant = padre;
