@@ -15,11 +15,31 @@ void inicializarPersona(Persona persona, const char* nombre, const char* ci) {
 }
 
 // Comprobar si una persona ya está asignada a algún cargo
+bool personaYaAsignadaRec(Persona node, const char* ci) {
+    if (node == nullptr) {
+       return false; // Si el nodo es nulo, no hay persona asignada
+    }
+
+    // Verificar si la cédula de identidad coincide con la persona actual
+    if (strcmp(node->ci, ci) == 0) {
+        return true; // Persona ya asignada
+    }
+    // Buscar recursivamente en los subordinados
+    for (int i = 0; i < node->numSubordinados; ++i) {
+        if (personaYaAsignadaRec(node->subordinados[i], ci)) {
+            return true; // Si se encuentra la persona en los subordinados
+       }
+    }
+    return false; // No se encontró la persona
+}
+
+// Función que utiliza la función recursiva para comprobar si una persona ya está asignada
+
 bool personaYaAsignada(Empresa &e, const char* ci) {
     if (e->organigrama == nullptr) {
         return false; // La empresa está vacía
     }
-    return eliminarPersonaRec(e->organigrama, ci);
+    return personaYaAsignadaRec(e->organigrama, ci);
 }
 
 // Asignar persona a un cargo en el organigrama
