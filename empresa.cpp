@@ -51,7 +51,7 @@ TipoRet EliminarOrg(Empresa &e) {
 }
 
 // Buscar cargo específico en el organigrama
-Persona buscarCargo(Persona node, const char* cargo) {
+Persona buscarCargo(Persona node, Cadena cargo) {
     if (node == nullptr) {
         return nullptr;
     }
