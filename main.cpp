@@ -29,12 +29,12 @@ int main(int argc, char *argv[]) {
 	Empresa empresa = new _empresa; // Inicializar empresa
 	empresa->organigrama = nullptr;
 	int opcion;
-	char nombreEmpresa[100];
-	char nombre[50];
-	char cargo[50];
-	char ci[12];
-	char cargoPadre[50];
-	char nuevoCargo[50];
+	Cadena nombreEmpresa[100];
+	Cadena nombre[50];
+	Cadena cargo[50];
+	Cadena ci[8];
+	Cadena cargoPadre[50];
+	Cadena nuevoCargo[50];
 	
 	do {
 		mostrarMenu();
@@ -85,7 +85,7 @@ int main(int argc, char *argv[]) {
 			}
 		case 5:{
 			cout << "\nIngrese la cédula de identidad de la persona a eliminar: ";
-			cin.getline(ci, 12);
+			cin.getline(ci, 8);
 			if (EliminarPersona(empresa, ci) == OK) {
 				cout << "\nPersona eliminada con éxito." << endl;
 			} else {
